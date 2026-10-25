@@ -1,0 +1,401 @@
+html,
+body {
+  width: 360px;
+  height: 540px;
+  overflow: hidden;
+  /* 窗口本身的形状由浏览器绘制，CSS 改不了；
+     这里用比主界面更深的底色「垫」在下面，
+     再由 .app 自己画圆角，四角就会露出深色，读起来就是圆角窗口 */
+  background: #06070b;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 16px;
+  /* 圆角半径：想改成更圆或恢复直角，只调这一个值 */
+  --win-radius: 14px;
+  border-radius: var(--win-radius);
+  background: var(--bg);
+  overflow: hidden;
+  /* 极细的描边，让圆角轮廓在深色底上清晰可辨 */
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* ---------- 顶部 ---------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  flex: 0 0 auto;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  color: var(--text);
+}
+
+.top-actions {
+  display: flex;
+  gap: 2px;
+}
+
+.ghost-btn {
+  font-size: 12px;
+  color: var(--muted);
+  padding: 5px 9px;
+  border-radius: 8px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.ghost-btn:hover {
+  background: var(--surface-2);
+  color: var(--text-2);
+}
+
+/* ---------- 用途切换 ---------- */
+.types {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 2px 0 8px;
+  flex: 0 0 auto;
+  scrollbar-width: none;
+}
+
+.types::-webkit-scrollbar {
+  display: none;
+}
+
+.type-chip {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  padding: 0 11px;
+  border-radius: 14px;
+  font-size: 12px;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid transparent;
+  transition: all 0.16s ease;
+  white-space: nowrap;
+}
+
+.type-chip .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.55;
+  transition: all 0.16s;
+}
+
+.type-chip:hover {
+  color: var(--text-2);
+  background: var(--surface-2);
+}
+
+.type-chip.active {
+  color: var(--text);
+  background: var(--surface-2);
+  border-color: var(--line);
+}
+
+.type-chip.active .dot {
+  opacity: 1;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.06);
+}
+
+/* ---------- 圆环 ---------- */
+.dial-wrap {
+  position: relative;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+
+.dial {
+  width: 212px;
+  height: 212px;
+  display: block;
+}
+
+.dial-track {
+  fill: none;
+  stroke: #1c2029;
+  stroke-width: 12;
+}
+
+.dial-progress {
+  fill: none;
+  stroke: url(#gradFocus);
+  stroke-width: 12;
+  stroke-linecap: round;
+  transition: stroke 0.3s ease;
+}
+
+.dial-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.phase {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+
+.clock {
+  font-size: 42px;
+  font-weight: 500;
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  color: var(--text);
+}
+
+.round {
+  font-size: 11px;
+  color: var(--muted-2);
+  margin-top: 4px;
+}
+
+/* ---------- 控制 ---------- */
+.controls {
+  display: flex;
+  gap: 8px;
+  flex: 0 0 auto;
+  margin-bottom: 14px;
+}
+
+.btn-main {
+  flex: 1;
+  height: 46px;
+  border-radius: 14px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: background 0.16s, transform 0.1s;
+}
+
+.btn-main:hover {
+  background: #ff7d5f;
+}
+
+.btn-main:active {
+  transform: scale(0.985);
+}
+
+.btn-main.running {
+  background: var(--surface-3);
+  color: var(--text-2);
+}
+
+.btn-main.running:hover {
+  background: #2f3542;
+}
+
+.btn-soft {
+  height: 46px;
+  padding: 0 13px;
+  border-radius: 14px;
+  background: var(--surface);
+  border: 1px solid var(--line-soft);
+  color: var(--muted);
+  font-size: 12.5px;
+  transition: all 0.16s;
+}
+
+.btn-soft:hover {
+  background: var(--surface-2);
+  color: var(--text-2);
+}
+
+/* ---------- 氛围音 ---------- */
+.music {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 11px;
+  background: var(--surface);
+  border: 1px solid var(--line-soft);
+  border-radius: 14px;
+  flex: 0 0 auto;
+  margin-bottom: 10px;
+}
+
+.play-btn {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--surface-3);
+  color: var(--text-2);
+  display: grid;
+  place-items: center;
+  transition: all 0.16s;
+}
+
+.play-btn:hover {
+  background: #2f3542;
+  color: var(--text);
+}
+
+.play-btn.playing {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.preset-wrap {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.preset-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12.5px;
+  color: var(--text-2);
+  padding: 5px 8px;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+
+.preset-btn:hover {
+  background: var(--surface-2);
+}
+
+.preset-menu {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: -4px;
+  min-width: 108px;
+  max-height: 292px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 4px;
+  background: #20242e;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+  display: none;
+  z-index: 20;
+  scrollbar-width: thin;
+}
+
+.preset-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.preset-menu::-webkit-scrollbar-thumb {
+  background: #3a4150;
+  border-radius: 3px;
+}
+
+.preset-menu .group-label {
+  padding: 7px 9px 3px;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  color: #79808f;
+  user-select: none;
+}
+
+.preset-menu .group-label:first-child {
+  padding-top: 3px;
+}
+
+.preset-menu.open {
+  display: block;
+}
+
+.preset-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 6px 9px;
+  border-radius: 7px;
+  font-size: 12.5px;
+  color: var(--text-2);
+}
+
+.preset-menu button:hover {
+  background: var(--surface-3);
+}
+
+.preset-menu button.active {
+  color: var(--accent);
+}
+
+.vol {
+  flex: 1 1 auto;
+  min-width: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 3px;
+  border-radius: 2px;
+  background: #2b313d;
+  outline: none;
+}
+
+.vol::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #dfe3ec;
+  cursor: pointer;
+  border: none;
+}
+
+/* ---------- 底部 ---------- */
+.today {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 2px 13px;
+  border-top: 1px solid var(--line-soft);
+  font-size: 11.5px;
+  color: var(--muted);
+  flex: 0 0 auto;
+}
+
+.today b {
+  color: var(--text-2);
+  font-weight: 500;
+}
+
+.sep {
+  margin: 0 3px;
+  color: var(--muted-2);
+}
+
+.link-btn {
+  font-size: 11.5px;
+  color: var(--accent);
+  opacity: 0.9;
+}
+
+.link-btn:hover {
+  opacity: 1;
+  text-decoration: underline;
+}

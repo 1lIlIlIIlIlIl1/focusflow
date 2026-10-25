@@ -1,0 +1,23 @@
+# 依赖（本项目其实没有依赖，留着防止以后加）
+node_modules/
+
+# 开发/调试临时产物
+**/.tmp/
+_preview/
+*.log
+
+# 打包产物与签名私钥（绝不要提交）
+*.crx
+*.pem
+*.zip
+
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# 与本项目无关的私有内容
+.workbuddy/
+personal-asset-manager-*.md

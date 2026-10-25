@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="color-scheme" content="dark" />
+  <title>FocusFlow</title>
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/popup.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+          <circle cx="8" cy="8" r="6.2" fill="none" stroke="#2b313d" stroke-width="2.2"/>
+          <path d="M8 1.8 A6.2 6.2 0 0 1 13.8 8" fill="none" stroke="#ff6b4a" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+        <span>FocusFlow</span>
+      </div>
+      <div class="top-actions">
+        <button class="ghost-btn" id="btnReport" title="打开专注报告">报告</button>
+        <button class="ghost-btn" id="btnSettings" title="打开设置">设置</button>
+      </div>
+    </header>
+
+    <nav class="types" id="types" aria-label="专注用途"></nav>
+
+    <section class="dial-wrap">
+      <svg class="dial" viewBox="0 0 200 200" aria-hidden="true">
+        <defs>
+          <linearGradient id="gradFocus" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#ff9b5b" />
+            <stop offset="100%" stop-color="#ff5470" />
+          </linearGradient>
+          <linearGradient id="gradBreak" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#57e5a8" />
+            <stop offset="100%" stop-color="#2fb587" />
+          </linearGradient>
+        </defs>
+        <circle class="dial-track" cx="100" cy="100" r="86" />
+        <circle class="dial-progress" id="dialProgress" cx="100" cy="100" r="86" transform="rotate(-90 100 100)" />
+      </svg>
+      <div class="dial-center">
+        <div class="phase" id="phaseLabel">专注</div>
+        <div class="clock num" id="clock">25:00</div>
+        <div class="round" id="roundLabel">第 1 / 4 轮</div>
+      </div>
+    </section>
+
+    <section class="controls">
+      <button class="btn-main" id="btnMain">开始专注</button>
+      <button class="btn-soft" id="btnReset" title="重置当前计时">重置</button>
+      <button class="btn-soft" id="btnSkip" title="跳过当前阶段">跳过</button>
+    </section>
+
+    <section class="music">
+      <button class="play-btn" id="btnMusic" aria-label="播放氛围音" title="播放 / 暂停氛围音">
+        <svg id="iconPlay" width="13" height="13" viewBox="0 0 12 12"><path d="M3 1.6 10 6 3 10.4Z" fill="currentColor"/></svg>
+        <svg id="iconPause" width="13" height="13" viewBox="0 0 12 12" style="display:none"><rect x="2.6" y="1.8" width="2.6" height="8.4" rx="1" fill="currentColor"/><rect x="6.8" y="1.8" width="2.6" height="8.4" rx="1" fill="currentColor"/></svg>
+      </button>
+      <div class="preset-wrap">
+        <button class="preset-btn" id="btnPreset">
+          <span id="presetName">雨声</span>
+          <svg width="9" height="9" viewBox="0 0 10 10"><path d="M2 4l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </button>
+        <div class="preset-menu" id="presetMenu">
+          <div class="group-label">氛围</div>
+          <button data-preset="rain">雨声</button>
+          <button data-preset="fire">篝火</button>
+          <button data-preset="stream">溪流</button>
+          <button data-preset="space">深空</button>
+          <div class="group-label">噪音</div>
+          <button data-preset="white">白噪音</button>
+          <button data-preset="pink">粉红噪音</button>
+          <button data-preset="violet">紫噪音</button>
+          <button data-preset="grey">灰噪音</button>
+        </div>
+      </div>
+      <input class="vol" id="volume" type="range" min="0" max="100" value="50" aria-label="音量" />
+    </section>
+
+    <footer class="today">
+      <div class="today-stat">
+        今日 <b class="num" id="todayMins">0 分钟</b>
+        <span class="sep">·</span>
+        <b class="num" id="todayCount">0</b> 个番茄
+      </div>
+      <button class="link-btn" id="btnOpenReport">查看报告</button>
+    </footer>
+  </div>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
