@@ -1,4 +1,4 @@
-// FocusFlow 报告与设置页
+// ZsFocus 报告与设置页
 import {
   store, KEYS, DEFAULT_SETTINGS, DEFAULT_TYPES, PHASE_LABEL,
   startOfDay, startOfWeek, startOfMonth, addDays, dayKey,
@@ -388,7 +388,7 @@ function bindSettings() {
     chrome.notifications.create({
       type: 'basic',
       iconUrl: 'icons/icon128.png',
-      title: 'FocusFlow',
+      title: 'ZsFocus',
       message: '通知长这样，专注结束时会提醒你',
       priority: 2,
     });

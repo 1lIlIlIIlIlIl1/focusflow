@@ -1,4 +1,4 @@
-// FocusFlow 后台服务 (MV3 service worker)
+// ZsFocus 后台服务 (MV3 service worker)
 // 职责：计时状态机、alarms 调度、图标角标、阶段完成通知、音频引擎生命周期
 import {
   KEYS, store, idleState, remainingOf, dayKey, uid,

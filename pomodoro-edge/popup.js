@@ -1,4 +1,4 @@
-// FocusFlow 弹窗逻辑
+// ZsFocus 弹窗逻辑
 import {
   store, KEYS, remainingOf, formatClock, filterSessions, sumMinutes,
   startOfDay, addDays, PHASE_LABEL, DEFAULT_SETTINGS,

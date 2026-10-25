@@ -1,4 +1,4 @@
-// FocusFlow 音频引擎：用 Web Audio 实时合成氛围音，零音频文件、无版权风险
+// ZsFocus 音频引擎：用 Web Audio 实时合成氛围音，零音频文件、无版权风险
 let ctx = null;
 let master = null;
 let current = null;

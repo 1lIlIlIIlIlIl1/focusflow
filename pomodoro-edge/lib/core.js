@@ -1,4 +1,4 @@
-// FocusFlow 共享核心：数据模型、存储封装、时间与统计计算
+// ZsFocus 共享核心：数据模型、存储封装、时间与统计计算
 // 被 popup / dashboard / background 共同引用（ES module）
 
 export const KEYS = {

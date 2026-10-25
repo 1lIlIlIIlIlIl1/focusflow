@@ -1,0 +1,22 @@
+{
+  "name": "zsfocus-logo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ZsFocus 品牌标识：Remotion 代码驱动的 logo 设计稿与图标导出",
+  "scripts": {
+    "studio": "remotion studio",
+    "board": "remotion still BrandBoard out/board.png --frame=0",
+    "still": "remotion still"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.355",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.355"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "typescript": "5.5.4"
+  }
+}

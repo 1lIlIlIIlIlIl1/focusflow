@@ -1,4 +1,4 @@
-# FocusFlow · 番茄专注
+# ZsFocus · 番茄专注
 
 一个装在 Edge（及 Chrome）里的番茄钟：自定义用途分类、实时合成的沉浸音、专注统计报告。**纯原生 HTML / CSS / JavaScript，无框架、无依赖、无构建步骤、无服务器**，数据全部存在本地。
 
@@ -18,7 +18,7 @@
 1. 打开 `edge://extensions`（Chrome 是 `chrome://extensions`）
 2. 打开左下角「开发人员模式」
 3. 点「加载解压缩的扩展」，选择本仓库的 **`pomodoro-edge`** 文件夹
-4. 点工具栏拼图图标 → 找到 FocusFlow → 图钉固定
+4. 点工具栏拼图图标 → 找到 ZsFocus → 图钉固定
 
 > ⚠️ 要选 `pomodoro-edge` 这个子文件夹，不是仓库根目录。扩展目录内不能出现任何以 `_` 开头的文件或文件夹，否则浏览器会拒绝加载。
 
@@ -35,13 +35,40 @@
 │   ├── offscreen.html/js 音频引擎（Web Audio 实时合成）
 │   ├── lib/core.js       数据模型、存储、时间与统计
 │   ├── styles/           样式
-│   └── icons/            图标 16/32/48/128
+│   └── icons/            图标 16/32/48/128（由 design/logo 渲染）
+├── design/logo/          品牌标识工程（Remotion 代码出图）
+│   ├── src/brand/        标识组件：6 个方案 + 应用图标
+│   ├── src/scenes/       画板与动效：方案对比、最终确认图、logo 动画
+│   └── out/              导出的 PNG（512/128/48/32/16）
 └── pomodoro-edge-dev/    开发辅助脚本（不进扩展）
     ├── test-core.mjs     统计与时间计算（24 项）
     ├── test-flow.mjs     计时状态机（15 项）
     ├── test-noise.mjs    噪音频谱与预设一致性（56 项）
-    ├── gen-icons.js      生成图标
     └── preview-server.js 把页面当普通网页跑（mock chrome API）
+```
+
+## 标识
+
+![ZsFocus 标识](design/logo/out/zs-final.png)
+
+主体是两个字母：
+
+- **Z —— 求真 / 臻 / 甄**。三个笔画全是直角，代表甄别、去伪存真，容不得含糊。
+- **s —— 求识**。一根细线，全是曲线，代表求索、开放、尚且未知。它轻，是因为知识永远没收完。
+- **瓦形底**取自「甄」的部首「瓦」——Z 立于瓦上，是「甄」字的结构。
+
+两者重量差就是语义差：真知要重，求知要轻。16px 工具栏尺度下，细线 s 会自然收成一个点，此时它读作一个干净的 Z，仍是完整标识。
+
+标识由代码生成（Remotion + SVG），不是画出来的位图：改一个数字就能重出全部尺寸，也能导出动效视频。
+
+```bash
+cd design/logo
+npm install
+npx remotion still ZsFinal out/zs-final.png --frame=0          # 最终确认图
+npx remotion still ZsBoard out/zs-board.png --frame=0          # 四版方案对比
+npx remotion still IconCanvas out/icon128.png --frame=0 \
+  --props='{"size":128,"variant":"flow","small":false,"icon":true,"dark":false}'
+npx remotion render LogoReveal out/logo.mp4                    # 品牌动效
 ```
 
 ## 开发

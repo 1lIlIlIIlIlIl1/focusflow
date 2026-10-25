@@ -1,4 +1,4 @@
-# FocusFlow · 番茄专注
+# ZsFocus · 番茄专注
 
 一个运行在 Edge / Chrome 里的番茄钟扩展：可以给每次专注打上用途标签（学习、工作、看视频……），
 配合实时合成的沉浸氛围音，并把每次专注记录成可视化报告。
@@ -27,13 +27,13 @@
    D:\Apractice\FocusFlow\pomodoro-edge
    ```
 
-5. 列表里出现「FocusFlow · 番茄专注」就成功了。首次安装会自动打开报告页。
+5. 列表里出现「ZsFocus · 番茄专注」就成功了。首次安装会自动打开报告页。
 
-6. 点击 Edge 工具栏右侧的「扩展」图标（拼图形状），找到 FocusFlow，点旁边的**小图钉**把它固定到工具栏。
+6. 点击 Edge 工具栏右侧的「扩展」图标（拼图形状），找到 ZsFocus，点旁边的**小图钉**把它固定到工具栏。
 
-7. 之后点工具栏那个橙色圆环图标，就能打开番茄钟。
+7. 之后点工具栏那个橙色 Z 图标，就能打开番茄钟。
 
-> 重新加载：改完代码后回到 `edge://extensions`，点 FocusFlow 卡片上的刷新图标即可。
+> 重新加载：改完代码后回到 `edge://extensions`，点 ZsFocus 卡片上的刷新图标即可。
 > 卸载：卡片上的「删除」。注意卸载会连带清掉本地记录。
 
 ---
@@ -138,7 +138,7 @@ pomodoro-edge/
 ├── offscreen.html/.js   音频引擎（Web Audio 实时合成，无音频文件）
 ├── lib/core.js          共享逻辑：数据模型、存储、时间与统计计算
 ├── styles/              三份样式表（基础变量 / 弹窗 / 报告页）
-├── icons/               图标 16/32/48/128
+├── icons/               图标 16/32/48/128（由 design/logo 渲染）
 ```
 
 > ⚠️ **加载扩展时选的就是这个 `pomodoro-edge` 文件夹**。它里面不能再放任何以下划线开头的文件或文件夹（如 `_tools`）——Chrome/Edge 规定 `_` 开头的名字是系统保留的，会直接报「无法加载扩展」。所以开发辅助脚本都放在同级的 `pomodoro-edge-dev` 目录里，与扩展完全分离。
@@ -157,9 +157,10 @@ cd ../pomodoro-edge-dev
 node test-core.mjs      # 统计与时间计算测试（24 项）
 node test-flow.mjs      # 计时状态机测试（15 项）
 node test-noise.mjs     # 噪音频谱/响度/预设一致性测试（56 项）
-node gen-icons.js       # 重新生成图标
 node preview-server.js  # 在普通网页里预览界面（http://127.0.0.1:8787/popup.html）
 ```
+
+图标不是手画的位图，由 `../design/logo`（Remotion）渲染导出，改标识后重新出图覆盖 `icons/` 即可。
 
 ---
 
