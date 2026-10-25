@@ -19,7 +19,9 @@
   - 噪音：白噪音、粉红噪音、紫噪音、灰噪音
 - **报告**：今日 / 本周 / 本月 / 全部；用途占比环图、每日趋势、24 小时时段分布、连续打卡、CSV 导出
 
-## 安装（开发者模式，约 2 分钟）
+## 安装（约 2 分钟）
+
+不想碰 git 的话，直接下打包好的 **[zsFocus-v1.0.0.zip](https://github.com/1lIlIlIIlIlIl1/focusflow/releases/download/v1.0.0/zsFocus-v1.0.0.zip)**（51 KB），解压后从第 3 步开始。
 
 1. 打开 `edge://extensions`（Chrome 是 `chrome://extensions`）
 2. 打开左下角「开发人员模式」
