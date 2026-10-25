@@ -24,7 +24,7 @@
 4. 在弹出的选择框里，定位到下面这个文件夹并选中它（选文件夹本身，不要进去选某个文件）：
 
    ```
-   D:\develop\WorkBuddy\2026-10-17-19-05-12\pomodoro-edge
+   D:\Apractice\FocusFlow\pomodoro-edge
    ```
 
 5. 列表里出现「FocusFlow · 番茄专注」就成功了。首次安装会自动打开报告页。
