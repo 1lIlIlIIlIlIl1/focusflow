@@ -319,6 +319,7 @@
 }
 
 .bar-track {
+  display: block;
   height: 6px;
   border-radius: 3px;
   background: var(--surface-3);
@@ -326,6 +327,7 @@
 }
 
 .bar-fill {
+  display: block;
   height: 100%;
   border-radius: 3px;
   transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
