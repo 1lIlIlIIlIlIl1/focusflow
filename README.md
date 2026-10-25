@@ -1,5 +1,11 @@
 # ZsFocus · 番茄专注
 
+[![License: MIT](https://img.shields.io/badge/license-MIT-3da639.svg)](LICENSE)
+![Manifest V3](https://img.shields.io/badge/manifest-v3-4285f4.svg)
+![Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen.svg)
+![Size](https://img.shields.io/badge/extension-142%20KB-ff7a4d.svg)
+![Tests](https://img.shields.io/badge/tests-94%20passing-3da639.svg)
+
 一个装在 Edge（及 Chrome）里的番茄钟：自定义用途分类、实时合成的沉浸音、专注统计报告。**纯原生 HTML / CSS / JavaScript，无框架、无依赖、无构建步骤、无服务器**，数据全部存在本地。
 
 ## 它长什么样
@@ -37,12 +43,12 @@
 │   ├── styles/           样式
 │   └── icons/            图标 16/32/48/128（由 design/logo 渲染）
 ├── design/logo/          品牌标识工程（Remotion 代码出图）
-│   ├── src/brand/        标识组件：6 个方案 + 应用图标
+│   ├── src/brand/        标识组件：4 个方案 + 应用图标
 │   ├── src/scenes/       画板与动效：方案对比、最终确认图、logo 动画
 │   └── out/              导出的 PNG（512/128/48/32/16）
 └── pomodoro-edge-dev/    开发辅助脚本（不进扩展）
     ├── test-core.mjs     统计与时间计算（24 项）
-    ├── test-flow.mjs     计时状态机（15 项）
+    ├── test-flow.mjs     计时状态机（14 项）
     ├── test-noise.mjs    噪音频谱与预设一致性（56 项）
     └── preview-server.js 把页面当普通网页跑（mock chrome API）
 ```
@@ -89,4 +95,6 @@ node test-noise.mjs
 
 ## 许可
 
-待定（如未另行说明，默认保留所有权利）。
+[MIT](LICENSE) © 2026 1lIlIlIIlIlIl1
+
+标识（`design/logo`）与全部界面代码同样以 MIT 授权。音频不含任何音频文件，全部为 Web Audio 实时合成，无第三方音源版权问题。

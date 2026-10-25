@@ -21,3 +21,6 @@ desktop.ini
 # 与本项目无关的私有内容
 .workbuddy/
 personal-asset-manager-*.md
+
+# 打包产物
+build/
